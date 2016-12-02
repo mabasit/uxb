@@ -1,0 +1,30 @@
+<div class="container" ng-controller="AuthController as vm">
+	<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-12">
+		<h2 class="text-center">Login</h2>
+		<form name="login" novalidate>
+	        <div class="form-group" ng-class="{'has-error': vm.errors.email}">
+	            <label for="email">Email</label>
+	            <input ng-model="data.email" id="email" type="email" class="form-control" placeholder="Enter email">
+	            <span class="help-block" ng-show="vm.errors.email">Email is required and should be valid</span>
+	        </div>
+	        <div class="form-group" ng-class="{'has-error': vm.errors.password}">
+	            <label for="password">Password</label>
+	            <input ng-model="data.password" type="password" id="password" class="form-control" placeholder="Enter password">
+	            <span class="help-block" ng-show="vm.errors.password">Password is required</span>
+	        </div>
+	        <div class="form-group">
+	            <button ng-click="vm.login(data)" class="btn btn-primary pull-left" ng-disabled="vm.loading">
+	            	Log In
+	        	</button>
+	        	<button ui-sref="register" class="btn btn-link pull-right" ng-disabled="vm.loading">
+	            	Register Here
+	        	</button>
+	        </div>
+	            <p class="text-danger" ng-show="vm.errors.message">
+	            	<br>
+	        		<i class="fa fa-exclamation-circle"></i>
+	            	{{vm.errors.message}}
+	        	</p>
+	    </form>
+	</div>
+</div>

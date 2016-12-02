@@ -1,0 +1,1 @@
+<?php return include public_path() . '/modules/common/views/index.html';

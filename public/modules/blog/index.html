@@ -1,0 +1,55 @@
+<div class="container" ng-controller="BlogController as vm" ng-init="vm.index()">
+		
+	<div ng-hide="vm.loading" class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2" ng-repeat="post in vm.posts">
+		
+		<section ng-show="$first">
+
+			<div class="btn-group pull-right">
+				<button type="button" class="btn btn-default">{{vm.sort_label}}</button>
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<span class="caret"></span>
+					<span class="sr-only">Toggle Dropdown</span>
+				</button>
+				<ul class="dropdown-menu">
+					<li ng-repeat="sort in vm.sorts"><a href="javascript:void()" ng-click="vm.changeSort(sort)">{{sort.label}}</a></li>
+				</ul>
+			</div>
+			<br>
+		</section>
+
+		<h3><a ui-sref="posts_show({id: post.slug})">{{post.title}}</a></h3>
+
+		<p>
+			Posted by: {{post.user_name}}
+			-
+			Posted at: {{post.created}}
+
+			<a class="pull-right" ng-show="user.id == post.user_id" ui-sref="posts_edit({id: post.slug})">Edit</a>
+		</p>	
+
+		<h4 class="text-justify">{{post.summary}}</h4>	
+
+		<hr>
+
+		<section ng-show="$last">
+
+			<div class="col-md-4 col-xs-4">
+				<button class="btn btn-primary pull-left" ng-click="vm.changePage(vm.paginate.current_page - 1)" ng-hide="vm.paginate.current_page==1">Previous</button>
+			</div>
+
+			<div class="col-md-4 col-xs-4">
+				<p class="text-center" style="margin-top: 5px;">Total: {{vm.paginate.total}}</p>
+			</div>
+
+			<div class="col-md-4 col-xs-4">
+				<button class="btn btn-primary pull-right" ng-click="vm.changePage(vm.paginate.current_page + 1)" ng-hide="vm.paginate.current_page >= vm.paginate.last_page">Next</button>
+			</div>
+			<br>
+		</section>
+	</div>
+
+	<div ng-show="vm.loading">
+		<p class="text-center">Loading...</p>
+	</div>
+
+</div>

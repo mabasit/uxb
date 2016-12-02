@@ -1,0 +1,25 @@
+<div class="container" ng-controller="BlogController as vm" ng-init="vm.show()">
+		
+	<div ng-hide="vm.loading" class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+		
+		<h3><a ui-sref="posts_show({id: vm.post.slug})">{{vm.post.title}}</a></h3>
+
+		<p>
+			Posted by: {{vm.post.user.name}}
+			-
+			Posted at: {{vm.post.created}}
+
+			<a class="pull-right" ng-show="user.id == vm.post.user.id" ui-sref="posts_edit({id: vm.post.slug})">Edit</a>
+		</p>	
+
+		<hr>
+
+		<h4 class="text-justify" style="font-size: 16px; line-height: 1.8;">{{vm.post.body}}</h4>	
+
+	</div>
+
+	<div ng-show="vm.loading">
+		<p class="text-center">Loading...</p>
+	</div>
+
+</div>

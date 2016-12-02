@@ -1,0 +1,35 @@
+<div class="container" ng-controller="BlogController as vm">
+		
+	<div class="col-xs-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+		
+		<h3 class="text-center">Create Blog Post</h3>
+
+		<form novalidate>
+			<div class="form-group" ng-class="{'has-error': vm.errors.title}">
+	            <label for="title">Title</label>
+	            <input ng-model="data.title" id="title" type="title" class="form-control" placeholder="Enter title of the blog">
+	            <span class="help-block" ng-show="vm.errors.title">Title is required</span>
+	        </div>
+
+	        <div class="form-group" ng-class="{'has-error': vm.errors.summary}">
+	            <label for="summary">Summary</label>
+	            <textarea ng-model="data.summary" id="summary" type="summary" class="form-control" placeholder="Enter short summary of the blog"></textarea>
+	            <span class="help-block" ng-show="vm.errors.summary">Summary should be less than 255 characters</span>
+	        </div>
+
+	        <div class="form-group" ng-class="{'has-error': vm.errors.body}">
+	            <label for="body">Body</label>
+	            <textarea ng-model="data.body" id="body" type="body" class="form-control" placeholder="Enter body of the blog" rows="8"></textarea>
+	            <span class="help-block" ng-show="vm.errors.body">Body is required</span>
+	        </div>
+
+	        <div class="form-group">
+	            <button ng-click="vm.create(data)" class="btn btn-primary btn-block" ng-disabled="vm.loading">
+	            	Create Post
+	        	</button>
+	        </div>
+		</form>
+
+	</div>
+
+</div>
